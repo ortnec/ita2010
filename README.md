@@ -13,7 +13,7 @@ Notes
 
 * See [TI's Wiki][TI Wiki] for help getting your computer configured as well as reference documentation and example code.
 
-* The prog1.c file in the [downloads][downloads] represents the code your LaunchPad came preloaded with. Feel free to use and modify it.
+* The prog1.c source in this repo and the [prog1.elf][prog1.elf] binary in the [downloads][downloads] section represents the code your LaunchPad came preloaded with. Feel free to use and modify it.
 
 * Both [prog1.elf][prog1.elf] and [prog2.elf][prog2.elf] were built with [llvm-msp430](https://www.fooe.net/trac/llvm-msp430/) on OS X 10.6 following the instructions on [TI's wiki][TI Wiki]. If you have any issues building prog1.c with IAR or Code Composer Studio please let me know.
 
