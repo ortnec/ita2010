@@ -22,6 +22,6 @@ Questions / Comments
 Feel free to submit and questions or comments on the [issues](https://github.com/ortnec/ita2010/issues) page.
 
 [TI Wiki]: <http://processors.wiki.ti.com/index.php/MSP430_LaunchPad_(MSP-EXP430G2)?DCMP=launchpad&HQS=Other+OT+launchpadwiki>
-[downloads]: (https://github.com/ortnec/ita2010/downloads)
-[prog1.elf]: (https://github.com/downloads/ortnec/ita2010/prog1.elf)
-[prog2.elf]: (https://github.com/downloads/ortnec/ita2010/prog2.elf)
+[downloads]: https://github.com/ortnec/ita2010/downloads
+[prog1.elf]: https://github.com/downloads/ortnec/ita2010/prog1.elf
+[prog2.elf]: https://github.com/downloads/ortnec/ita2010/prog2.elf
