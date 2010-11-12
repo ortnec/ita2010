@@ -92,7 +92,7 @@ int main(void) {
         printHash();
         break;
       case ' ':
-        delay(DELAY);
+        delay(DOUBLE_DELAY);
         break;
       case '\0':
         currentChar = (char *) currentMessage - 1; // -1 since we += 1 below
