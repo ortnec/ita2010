@@ -1,9 +1,10 @@
 #include <msp430x20x3.h>
 
-#define DELAY 150000
-#define QUARTER_DELAY (DELAY / 4)
-#define DOUBLE_DELAY (DELAY * 2)
-#define QUAD_DELAY (DELAY * 4)
+#define UNIT_DELAY 100000
+#define DOT_DELAY UNIT_DELAY
+#define DASH_DELAY (UNIT_DELAY * 3)
+#define LETTER_DELAY (UNIT_DELAY * 3)
+#define SPACE_DELAY (UNIT_DELAY * 7)
 #define ON 1
 #define OFF 0
 #define LED1 BIT0
@@ -11,26 +12,27 @@
 
 struct Mapping {
   const char letter;
-  const char pattern[5];
+  const char pattern[6];
 };
 
 const struct Mapping map[] = {
-  { 'A', ".-"    }, { 'B', "-..."  }, { 'C', "-.-."  },
-  { 'D', "-.."   }, { 'E', "."     }, { 'F', "..-."  },
-  { 'G', "--."   }, { 'H', "...."  }, { 'I', ".."    },
-  { 'J', ".---"  }, { 'K', ".-.-"  }, { 'L', ".-.."  },
-  { 'M', "--"    }, { 'N', "-."    }, { 'O', "---"   },
-  { 'P', ".--."  }, { 'Q', "--.-"  }, { 'R', ".-."   },
-  { 'S', "..."   }, { 'T', "-"     }, { 'U', "..-"   },
-  { 'V', "...-"  }, { 'W', ".--"   }, { 'X', "-..-"  },
-  { 'Y', "-.--"  }, { 'Z', "--.."  }, { '1', ".----" },
-  { '2', "..---" }, { '3', "...--" }, { '4', "....-" },
-  { '5', "....." }, { '6', "-...." }, { '7', "--..." },
-  { '8', "---.." }, { '9', "----." }, { '0', "-----" }
+  { 'A', ".-"     }, { 'B', "-..."  }, { 'C', "-.-."  },
+  { 'D', "-.."    }, { 'E', "."     }, { 'F', "..-."  },
+  { 'G', "--."    }, { 'H', "...."  }, { 'I', ".."    },
+  { 'J', ".---"   }, { 'K', ".-.-"  }, { 'L', ".-.."  },
+  { 'M', "--"     }, { 'N', "-."    }, { 'O', "---"   },
+  { 'P', ".--."   }, { 'Q', "--.-"  }, { 'R', ".-."   },
+  { 'S', "..."    }, { 'T', "-"     }, { 'U', "..-"   },
+  { 'V', "...-"   }, { 'W', ".--"   }, { 'X', "-..-"  },
+  { 'Y', "-.--"   }, { 'Z', "--.."  }, { '1', ".----" },
+  { '2', "..---"  }, { '3', "...--" }, { '4', "....-" },
+  { '5', "....."  }, { '6', "-...." }, { '7', "--..." },
+  { '8', "---.."  }, { '9', "----." }, { '0', "-----" },
+  { '.', ".-.-.-" }, { '/', "-.--." }, { '-', "-...-" }
 };
 
-const char message1[] = { "# VCC TO P14" };
-const char message2[] = { "# TINYURL 37C5S8E" };
+const char message1[] = { "#VCC TO PIN 1.4" };
+const char message2[] = { "#TINYURL.COM/37C5S8E" };
 
 void toggleLed(int led, int state) {
   if (state) {
@@ -47,9 +49,9 @@ void delay(unsigned long int cycles) {
 
 void printHash() {
   toggleLed(LED1, ON);
-  delay(QUAD_DELAY);
+  delay(LETTER_DELAY);
   toggleLed(LED1, OFF);
-  delay(DELAY);
+  delay(UNIT_DELAY);
 }
 
 void printMorse(char c) {
@@ -69,9 +71,9 @@ void printMorse(char c) {
     if (code[i] == '\0') { return; }
 
     toggleLed(LED2, ON);
-    delay(code[i] == '.' ? QUARTER_DELAY : DOUBLE_DELAY);
+    delay(code[i] == '.' ? DOT_DELAY : DASH_DELAY);
     toggleLed(LED2, OFF);
-    delay(DELAY);
+    delay(UNIT_DELAY);
   }
 }
 
@@ -92,13 +94,14 @@ int main(void) {
         printHash();
         break;
       case ' ':
-        delay(DOUBLE_DELAY);
+        delay(SPACE_DELAY);
         break;
       case '\0':
         currentChar = (char *) currentMessage - 1; // -1 since we += 1 below
         break;
       default:
         printMorse(*currentChar);
+        delay(LETTER_DELAY);
         break;
     }
     currentChar += 1;
@@ -110,8 +113,6 @@ int main(void) {
     } else if (!state && (currentState != state)) { // P1.4 lo
       currentState = state;
       currentMessage = currentChar = (char *) message1;
-    } else {
-      delay(DELAY);
     }
   }
 
