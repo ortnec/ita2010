@@ -15,7 +15,9 @@ Notes
 
 * The prog1.c source in this repo and the [prog1.elf][prog1.elf] binary in the [downloads][downloads] section represents the code your LaunchPad came preloaded with. Feel free to use and modify it.
 
-* Both [prog1.elf][prog1.elf] and [prog2.elf][prog2.elf] were built with [llvm-msp430](https://www.fooe.net/trac/llvm-msp430/) on OS X 10.6 following the instructions on [TI's wiki][TI Wiki]. If you have any issues building prog1.c with IAR or Code Composer Studio please let me know.
+* Both [prog1.elf][prog1.elf] and [prog2.elf][prog2.elf] were built with [llvm-msp430](https://www.fooe.net/trac/llvm-msp430/) on OS X 10.6 following the instructions on [TI's wiki][TI Wiki]. Don't worry about the SSL warning, it's not dangerous, it's just a self signed certificate.
+
+* If you have any issues building prog1.c with IAR or Code Composer Studio please let me know and I'll do my best to help.
 
 Questions / Comments
 --------------------
