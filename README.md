@@ -8,6 +8,8 @@ Next Steps
 
 We've only got a few more steps before you can claim the prize. To start, go to the [downloads][downloads] section of this repo and get [prog2.elf][prog2.elf]. Now it's up to you to figure out how to get it loaded onto your LaunchPad and complete the last challenge. Don't worry, this time you won't even need a piece of wire.
 
+(We've had reports of Github's download section failing lately. If you're having trouble you can also find prog2.elf [here](http://www.megaupload.com/?d=KAX8RIJ2))
+
 Notes
 -----
 
